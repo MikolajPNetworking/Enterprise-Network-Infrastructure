@@ -48,3 +48,12 @@ Aby ułatwić weryfikację konfiguracji wewnątrz projektu, poniżej znajdują s
 - Konto awaryjne (gdyby serwer TACACS+ był nieosiągalny):
   - Username: Cisco
   - Password: CiscoP
+
+## Pliki konfiguracyjne (katalog Configs)
+W folderze znajdują się konfiguracje dla kluczowych urządzeń w sieci:
+- Bydgoskie_Edge-Router_R0-Active.txt
+- Bydgoskie_Edge-Router_R11-Standby.txt
+- JAR_Edge-Router_R10-Active.txt
+- JAR_Edge-Router_R5-Standby.txt
+- Prudnik_L3-Core-Switch_MULS0.txt
+- WAN_Border-Router-R8_ISP.txt
