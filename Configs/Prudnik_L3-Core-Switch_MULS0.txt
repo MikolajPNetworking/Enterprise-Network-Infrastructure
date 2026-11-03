@@ -1,0 +1,382 @@
+Current configuration : 8272 bytes
+!
+version 16.3.2
+service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname MULS0
+!
+!
+enable secret 5 $1$mERr$hx5rVt7rPNoS4wqbXKX7m0
+!
+!
+!
+!
+!
+aaa new-model
+!
+aaa authentication login default group tacacs+ 
+!
+!
+aaa authorization exec default group tacacs+ local
+!
+!
+!
+!
+!
+no ip cef
+ip routing
+!
+no ipv6 cef
+!
+!
+!
+username Cisco secret 5 $1$mERr$0z1vFYHqX4Z8.S5Rxkdh50
+username Cisco2 privilege 15 secret 5 $1$mERr$MXgL8mtoy5obprNopiqaw0
+!
+!
+lldp run
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip ssh version 2
+no ip domain-lookup
+ip domain-name LAB
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Port-channel4
+ description TO_SWITCH05_PO4
+ switchport trunk native vlan 666
+ switchport trunk allowed vlan 5,10,20,30,50,60
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface GigabitEthernet1/0/1
+ description TO_SWITCH05_P04
+ switchport trunk native vlan 666
+ switchport trunk allowed vlan 5,10,20,30,50,60
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 4 mode active
+!
+interface GigabitEthernet1/0/2
+ description TO_SWITCH05_P04
+ switchport trunk native vlan 666
+ switchport trunk allowed vlan 5,10,20,30,50,60
+ switchport mode trunk
+ switchport nonegotiate
+ channel-group 4 mode active
+!
+interface GigabitEthernet1/0/3
+ descripiton TO_ROUTER03_WAN
+ no switchport
+ ip address 172.16.10.2 255.255.255.252
+ ip ospf 1 area 0
+ ip access-group WAN-TO-LAN in
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet1/0/4
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/5
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/6
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/7
+ description TO_SERWER_AAA/DHCP
+ no switchport
+ ip address 172.16.11.1 255.255.255.252
+ no lldp transmit
+ ip ospf 1 area 0
+ ip access-group DHCP/AAAin in
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet1/0/8
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/9
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/10
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/11
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/12
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/13
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/14
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/15
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/16
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/17
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/18
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/19
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/20
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/21
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/22
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/23
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/0/24
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/1/1
+ description TO_ROUTER08_BRZEGOWY_WAN_PRZY_ISP
+ no switchport
+ ip address 172.16.7.2 255.255.255.252
+ ip ospf 1 area 0
+ ip access-group WAN-TO-LAN in
+!
+interface GigabitEthernet1/1/2
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/1/3
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet1/1/4
+ description BLACKHOLE_VLAN
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan5
+ mac-address 0009.7c4b.aa01
+ ip address 192.168.4.1 255.255.255.0
+ ip helper-address 172.16.11.2
+ ip access-group LANin in
+!
+interface Vlan10
+ mac-address 0009.7c4b.aa02
+ ip address 192.168.5.1 255.255.255.0
+ ip helper-address 172.16.11.2
+ ip access-group LANin in
+!
+interface Vlan20
+ mac-address 0009.7c4b.aa03
+ ip address 192.168.6.1 255.255.255.0
+ ip helper-address 172.16.11.2
+ ip access-group LANin in
+!
+interface Vlan30
+ mac-address 0009.7c4b.aa04
+ ip address 192.168.7.1 255.255.255.0
+ ip helper-address 172.16.11.2
+ ip access-group LANin in
+!
+interface Vlan50
+ mac-address 0009.7c4b.aa05
+ ip address 192.168.9.1 255.255.255.0
+ ip helper-address 172.16.11.2
+ ip access-group LANin in
+!
+interface Vlan60
+ mac-address 0009.7c4b.aa06
+ ip address 192.168.10.1 255.255.255.0
+ ip helper-address 172.16.11.2
+ ip access-group LANin in
+!
+interface Vlan65
+ mac-address 0009.7c4b.aa07
+ ip address 192.168.11.1 255.255.255.0
+ ip helper-address 172.16.11.2
+ ip access-group LANin in
+!
+router ospf 1
+ log-adjacency-changes
+ passive-interface Vlan5
+ passive-interface Vlan10
+ passive-interface Vlan20
+ passive-interface Vlan30
+ passive-interface Vlan50
+ passive-interface Vlan60
+ passive-interface Vlan65
+ network 192.168.0.0 0.0.15.255 area 0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+ip access-list extended WAN-TO-LAN
+ permit icmp any any
+ permit ospf any any
+ permit ip 192.168.21.0 0.0.0.255 192.168.5.0 0.0.0.255
+ permit udp host 172.16.7.1 host 172.16.7.2 eq 123
+ permit tcp 192.168.20.0 0.0.0.255 any established
+ permit ip 192.168.33.0 0.0.0.7 192.168.5.0 0.0.0.255
+ permit ip 192.168.22.0 0.0.0.255 192.168.6.0 0.0.0.255
+ permit ip 192.168.34.0 0.0.0.7 192.168.6.0 0.0.0.255
+ permit ip 192.168.23.0 0.0.0.255 192.168.7.0 0.0.0.255
+ permit ip 192.168.35.0 0.0.0.7 192.168.7.0 0.0.0.255
+ permit ip 192.168.24.0 0.0.0.255 192.168.8.0 0.0.0.255
+ permit ip 192.168.36.0 0.0.0.7 192.168.8.0 0.0.0.255
+ permit ip 192.168.25.0 0.0.0.255 192.168.9.0 0.0.0.255
+ permit ip 192.168.37.0 0.0.0.7 192.168.9.0 0.0.0.255
+ permit ip 192.168.26.0 0.0.0.255 192.168.10.0 0.0.0.255
+ permit ip 192.168.38.0 0.0.0.7 192.168.10.0 0.0.0.255
+ permit ip any host 192.168.10.5
+ permit ip 192.168.26.0 0.0.0.255 192.168.11.0 0.0.0.255
+ permit icmp any any echo
+ permit icmp any any echo-reply
+ permit udp 8.8.8.8 0.0.0.3 eq domain any
+ permit tcp any eq www any established
+ permit udp any host 172.16.11.2 eq bootps
+ permit tcp any host 172.16.11.2 eq 49
+ permit icmp any host 172.16.7.2
+ permit udp host 192.168.38.6 host 172.16.7.2 eq tftp
+ permit udp host 192.168.38.6 host 172.16.7.2 range 1024 65535
+ permit udp host 192.168.38.6 192.168.10.0 0.0.0.255 range 1024 65535
+ip access-list extended LANin
+ permit ip host 192.168.10.5 any
+ permit tcp any host 192.168.10.5 established
+ permit icmp any any
+ permit ip any host 172.16.11.2
+ permit tcp 192.168.4.0 0.0.0.255 any established
+ permit ip 192.168.10.0 0.0.0.255 192.168.11.0 0.0.0.255
+ permit ip 192.168.11.0 0.0.0.255 192.168.10.0 0.0.0.255
+ deny tcp 192.168.4.0 0.0.0.255 any
+ deny tcp any any eq 22
+ deny ip 192.168.0.0 0.0.15.255 192.168.0.0 0.0.15.255
+ permit ip any any
+ip access-list extended DHCP/AAAin
+ permit udp host 172.16.11.2 eq bootps any
+ permit tcp host 172.16.11.2 eq 49 any
+ permit icmp host 172.16.11.2 any echo-reply
+!
+no cdp run
+!
+banner motd ^C WEJSCIE SUROWO WZBRONIONE !!! ^C
+!
+tacacs-server host 172.16.11.2 key secret
+!
+!
+!
+logging 192.168.38.6
+line con 0
+ password 7 0822455D0A16
+ logging synchronous
+!
+line aux 0
+!
+line vty 0 4
+ logging synchronous
+ login authentication default
+line vty 5 15
+ logging synchronous
+ login authentication default
+!
+!
+!
+ntp server 172.16.7.1
+!
+end               
